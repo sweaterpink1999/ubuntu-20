@@ -48,18 +48,6 @@ if [ -z "$BASH" ] ||
     fi
     exec bash "$0" "$@"
 fi
-# Ubuntu 20.04 only
-
-if [ "$1" != "ubuntu" ] || [ "$2" != "20.04" ]; then
-    echo ""
-    echo "=================================="
-    echo " Only Ubuntu 20.04 is supported "
-    echo "=================================="
-    echo ""
-    echo "Usage:"
-    echo "bash reinstall.sh ubuntu 20.04"
-    exit 1
-fi
 
 # 好像跟 trap SIGINT 有冲突
 # 记录日志，过滤含有 password 的行
