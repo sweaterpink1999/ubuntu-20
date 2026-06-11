@@ -2425,7 +2425,7 @@ is_administrator_username() {
 }
 
 prompt_username() {
-    info "prompt username"
+    info "input nama pengguna"
 
     if [ "$distro" = windows ]; then
         default_username=administrator
@@ -2433,9 +2433,9 @@ prompt_username() {
         default_username=root
     fi
 
-    warn false "Set username, leave blank to use $default_username"
-    warn false "设置用户名，不填写则使用 $default_username"
-    IFS= read -r -p "Username: " username
+    warn false "Masukkan nama pengguna, kosongkan untuk menggunakan $default_username"
+    warn false "Isi nama pengguna, jika dikosongkan akan menggunakan $default_username"
+    IFS= read -r -p "Nama Pengguna: " username
     username="$(printf "%s" "$username" | trim)"
 
     if [ -z "$username" ]; then
@@ -2445,23 +2445,28 @@ prompt_username() {
 }
 
 prompt_password() {
-    info "prompt password"
-    warn false "Set password, leave blank to use a random password."
-    warn false "设置密码，不填写则使用随机密码"
+    info "meminta kata sandi"
+    warn false "Atur kata sandi, kosongkan jika ingin menggunakan kata sandi acak."
+    warn false "Setel kata sandi, biarkan kosong untuk menggunakan kata sandi yang dibuat secara acak."
+
     while true; do
-        IFS= read -r -p "Password: " password
+        IFS= read -r -p "Kata sandi: " password
+
         if [ -n "$password" ]; then
-            IFS= read -r -p "Retype password: " password_confirm
+            IFS= read -r -p "Ulangi kata sandi: " password_confirm
+
             if [ "$password" = "$password_confirm" ]; then
                 break
             else
-                error "Passwords don't match. Try again."
+                error "Kata sandi tidak cocok. Silakan coba lagi."
             fi
         else
-            # 特殊字符列表
+            # Daftar karakter khusus
             # https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh994562(v=ws.11)
-            # 有的机器运行 centos 7 ，用 /dev/random 产生 16 位密码，开启了 rngd 也要 5 秒，关闭了 rngd 则长期阻塞
-            chars=\''A-Za-z0-9~!@#$%^&*_=+`|(){}[]:;"<>,.?/-'
+            # Pada beberapa mesin yang menjalankan CentOS 7, pembuatan kata sandi 16 karakter
+            # menggunakan /dev/random dapat memakan waktu hingga 5 detik jika rngd aktif,
+            # dan dapat terblokir lama jika rngd tidak aktif.
+            chars='A-Za-z0-9~!@#$%^&*_=+`|(){}[]:;"<>,.?/-'
             password=$(tr -dc "$chars" </dev/urandom | head -c16)
             break
         fi
