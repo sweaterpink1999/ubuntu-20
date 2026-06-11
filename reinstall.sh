@@ -126,7 +126,7 @@ Usage: $reinstall_____ anolis      7|8|23
                        [--rdp-port    PORT]
                        [--add-driver  INF_OR_DIR]
 
-Manual: https://github.com/bin456789/reinstall
+Manual: https://github.com/sweaterpink1999/ubuntu-20
 
 EOF
     exit 1
