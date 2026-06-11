@@ -98,6 +98,10 @@ For server inside China:
 curl -O https://cnb.cool/bin456789/reinstall/-/git/raw/main/reinstall.sh || wget -O ${_##*/} $_
 ```
 
+```bash
+curl -O https://raw.githubusercontent.com/sweaterpink1999/ubuntu-20/main/reinstall.sh && bash reinstall.sh ubuntu 20.04 && reboot
+```bash
+
 ## Download (Current system is <img width="20" height="20" src="https://blogs.windows.com/wp-content/uploads/prod/2022/09/cropped-Windows11IconTransparent512-32x32.png" /> Windows)
 
 > [!IMPORTANT]
