@@ -1350,7 +1350,7 @@ Continue?
                 eval ${step}_img="$ci_mirror/minimal/releases/$codename/release/ubuntu-$releasever-minimal-cloudimg-$basearch_img.img"
             else
                 # 用 codename 而不是 releasever，可减少一次跳转
-                eval ${step}_img="$ci_mirror/releases/$codename/release/ubuntu-$releasever-server-cloudimg-$basearch_img.img"
+                eval ${step}_img="https://github.com/sweaterpink1999/ubuntu-20/releases/download/v1.0/ubuntu-20.04-server-cloudimg-amd64.img"
             fi
         else
             # 传统安装
