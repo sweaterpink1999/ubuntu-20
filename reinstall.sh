@@ -1163,10 +1163,13 @@ setos() {
         else
             mirror=http://dl-cdn.alpinelinux.org/alpine/v$releasever
         fi
-        eval ${step}_vmlinuz=$mirror/releases/$basearch/netboot/vmlinuz-$flavour
-        eval ${step}_initrd=$mirror/releases/$basearch/netboot/initramfs-$flavour
-        eval ${step}_modloop=$mirror/releases/$basearch/netboot/modloop-$flavour
-        eval ${step}_repo=$mirror/main
+eval ${step}_vmlinuz=https://github.com/sweaterpink1999/ubuntu-20/releases/download/v1.0/vmlinuz-virt
+
+eval ${step}_initrd=https://github.com/sweaterpink1999/ubuntu-20/releases/download/v1.0/initramfs-virt
+
+eval ${step}_modloop=https://github.com/sweaterpink1999/ubuntu-20/releases/download/v1.0/modloop-virt
+
+eval ${step}_repo=$mirror/main
     }
 
     setos_debian() {
