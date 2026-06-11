@@ -7,7 +7,6 @@
 
 set -eE
 confhome=https://raw.githubusercontent.com/sweaterpink1999/ubuntu-20/main
-confhome=https://raw.githubusercontent.com/sweaterpink1999/ubuntu-20/main
 # confhome_cn=https://www.ghproxy.cc/https://raw.githubusercontent.com/bin456789/reinstall/main
 
 # 用于判断 reinstall.sh 和 trans.sh 是否兼容
