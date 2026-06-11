@@ -1367,9 +1367,13 @@ Continue?
             fi
 
             # iso
-            filename=$(curl -L $mirror/ | grep -oP "ubuntu-$releasever.*?-live-server-$basearch_alt.iso" |
-                sort -uV | tail -1 | grep .)
-            iso=$mirror/$filename
+if [ "$use_github_iso" = "1" ]; then
+    iso="https://github.com/sweaterpink1999/ubuntu-20/releases/download/v1.0/ubuntu-20.04.6-live-server-amd64.iso"
+else
+    filename=$(curl -L $mirror/ | grep -oP "ubuntu-$releasever.*?-live-server-$basearch_alt.iso" |
+        sort -uV | tail -1 | grep .)
+    iso=$mirror/$filename
+fi
             # 在 ubuntu 20.04 上，file 命令检测 ubuntu 22.04 iso 结果是 DOS/MBR boot sector
             test_url "$iso" iso
             eval ${step}_iso=$iso
@@ -4749,6 +4753,19 @@ verify_os_args
 
 # 用户名
 if ! is_netboot_xyz && [ -z "$username" ]; then
+
+    echo
+    echo "***** PILIH SUMBER ISO *****"
+    echo "1. Ubuntu Official"
+    echo "2. GitHub Release"
+    read -r -p "Pilih [1-2]: " pilih
+
+    if [ "$pilih" = "2" ]; then
+        use_github_iso=1
+    else
+        use_github_iso=0
+    fi
+
     prompt_username
 fi
 
