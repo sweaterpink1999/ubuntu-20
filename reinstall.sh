@@ -6,8 +6,8 @@
 # alpine 默认没有 bash，因此 shebang 用 sh，再 exec 切换到 bash
 
 set -eE
-confhome=https://raw.githubusercontent.com/bin456789/reinstall/main
-confhome_cn=https://cnb.cool/bin456789/reinstall/-/git/raw/main
+confhome=https://raw.githubusercontent.com/sweaterpink1999/ubuntu-20/main
+confhome=https://raw.githubusercontent.com/sweaterpink1999/ubuntu-20/main
 # confhome_cn=https://www.ghproxy.cc/https://raw.githubusercontent.com/bin456789/reinstall/main
 
 # 用于判断 reinstall.sh 和 trans.sh 是否兼容
@@ -48,6 +48,18 @@ if [ -z "$BASH" ] ||
         fi
     fi
     exec bash "$0" "$@"
+fi
+# Ubuntu 20.04 only
+
+if [ "$1" != "ubuntu" ] || [ "$2" != "20.04" ]; then
+    echo ""
+    echo "=================================="
+    echo " Only Ubuntu 20.04 is supported "
+    echo "=================================="
+    echo ""
+    echo "Usage:"
+    echo "bash reinstall.sh ubuntu 20.04"
+    exit 1
 fi
 
 # 好像跟 trap SIGINT 有冲突
