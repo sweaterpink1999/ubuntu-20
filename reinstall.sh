@@ -4797,11 +4797,7 @@ oracle | opensuse | anolis | opencloudos | openeuler)
     cloud_image=1
     ;;
 redhat | centos | almalinux | rocky | fedora | ubuntu)
-    if is_force_use_installer; then
-        unset cloud_image
-    else
-        cloud_image=1
-    fi
+    unset cloud_image
     ;;
 esac
 
