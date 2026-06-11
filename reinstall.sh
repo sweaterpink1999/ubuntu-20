@@ -1374,6 +1374,13 @@ else
         sort -uV | tail -1 | grep .)
     iso=$mirror/$filename
 fi
+
+echo
+echo "=================================="
+echo " ISO YANG DIGUNAKAN"
+echo "=================================="
+echo "$iso"
+echo
             # 在 ubuntu 20.04 上，file 命令检测 ubuntu 22.04 iso 结果是 DOS/MBR boot sector
             test_url "$iso" iso
             eval ${step}_iso=$iso
